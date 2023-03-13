@@ -1,0 +1,84 @@
+[versions]
+## App Target and Version
+sdk-target                  = "33"
+build-tools                 = "30.0.3"
+sdk-min                     = "24"
+app-code                    = "1"
+app-name                    = "1.0.0"
+## -----------------------------------
+android-gradle              = "7.4.2"
+kotlin                      = "1.8.0"
+kotlin-compiler             = "1.4.2"
+gradle-cache                = "2.7.0"
+desugar                     = "1.1.5"
+spotless                    = "6.13.0"
+google-services-plugin      = "4.3.15"
+firebase-bom                = "31.2.0"
+firebase-crashlytics        = "2.9.2"
+firebase-pref               = "1.4.2"
+coroutines                  = "1.6.4"
+ksp                         = "1.8.0-1.0.8"
+lifecycle                   = "2.5.1"
+diktat                      = "1.2.4.2"
+hilt                        = "2.44"
+compose-viewmodel           = "2.5.1"
+android-multidex            = "2.0.1"
+android-biometric           = "1.2.0-alpha04"
+android-crypto              = "1.1.0-alpha03"
+profile-installer           = "1.2.2"
+core-ktx                    = "1.9.0"
+
+[libraries]
+desugar                     = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
+ksp                         = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+kotlin-stdlib               = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-jdk8          = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect              = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+google-services             = { module = "com.google.gms:google-services", version.ref = "google-services-plugin" }
+firebase-bom                = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-crashlytics        = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+firebase-remoteconfig       = { module = "com.google.firebase:firebase-config-ktx" }
+firebase-perf               = { module = "com.google.firebase:firebase-perf-ktx" }
+firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebase-crashlytics" }
+firebase-pref-gradle        = { module = "com.google.firebase:perf-plugin", version.ref = "firebase-pref" }
+coroutine-core              = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutine-android           = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutine-test              = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+lifecycle-viewmodel         = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose-viewmodel" }
+lifecycle-livedata          = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-savedstate        = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
+lifecycle-compiler          = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycle" }
+lifecycle-java8             = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycle" }
+lifecycle-services          = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycle" }
+lifecycle-process           = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
+lifecycle-reactivestream    = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "lifecycle" }
+lifecycle-test              = { module = "androidx.lifecycle:lifecycle-runtime-testing", version.ref = "lifecycle" }
+hilt-core                   = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler               = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+
+# region Androidx App
+android-multidex            = { module = "androidx.multidex:multidex", version.ref = "android-multidex" }
+android-biometric           = { module = "androidx.biometric:biometric", version.ref = "android-biometric" }
+android-crypto              = { module = "androidx.security:security-crypto", version.ref = "android-crypto" }
+android-core                = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+# endregion
+profile-installer           = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profile-installer" }
+
+[bundles]
+kotlin                      = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect"]
+firebase-package            = ["firebase-crashlytics", "firebase-remoteconfig", "firebase-perf" ]
+firebase-plugins            = ["google-services", "firebase-crashlytics-gradle", "firebase-pref-gradle" ]
+lifecycle                   = ["lifecycle-viewmodel", "lifecycle-viewmodel-compose", "lifecycle-livedata", "lifecycle-savedstate",
+    "lifecycle-java8", "lifecycle-services", "lifecycle-process", "lifecycle-reactivestream"]
+coroutines                  = ["coroutine-core", "coroutine-android" ]
+androidx-app                = ["android-multidex", "android-biometric", "android-crypto", "android-core"]
+
+[plugins]
+android-app                 = { id = "com.android.application", version.ref = "android-gradle" }
+android-library             = { id = "com.android.library", version.ref = "android-gradle" }
+android-test                = { id = "com.android.test", version.ref = "android-gradle" }
+kotlin                      = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-noarg                = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "kotlin" }
+gradle-cache-fix            = { id = "org.gradle.android.cache-fix", version.ref = "gradle-cache" }
+spotless                    = { id = "com.diffplug.spotless", version.ref = "spotless" }
