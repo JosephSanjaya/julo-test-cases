@@ -18,5 +18,8 @@ subprojects {
 
 dependencies {
     constraints {
+        api(project(":core:common"))
+        api(project(":core:ui"))
+        api(project(":core:network"))
     }
 }
