@@ -1,0 +1,27 @@
+[versions]
+pluto                       = "2.0.9"
+flipper                     = "0.176.1"
+flipper-soloader            = "0.10.4"
+anrwatchdog                 = "1.4.0"
+leak-canary                 = "2.8.1"
+
+[libraries]
+flipper             = { module = "com.facebook.flipper:flipper", version.ref = "flipper" }
+flipper-noop        = { module = "com.facebook.flipper:flipper-noop", version.ref = "flipper" }
+soloader            = { module = "com.facebook.soloader:soloader", version.ref = "flipper-soloader" }
+flipper-network     = { module = "com.facebook.flipper:flipper-network-plugin", version.ref = "flipper" }
+flipper-leak-canary = { module = "com.facebook.flipper:flipper-leakcanary2-plugin", version.ref = "flipper" }
+anrwatchdog         = { module = "com.github.anrwatchdog:anrwatchdog", version.ref = "anrwatchdog" }
+leak-canary         = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leak-canary" }
+pluto               = { module = "com.plutolib:pluto", version.ref = "pluto" }
+pluto-noop          = { module = "com.plutolib:pluto-no-op", version.ref = "pluto" }
+pluto-plugins       = { module = "com.plutolib.plugins:bundle-core", version.ref = "pluto" }
+pluto-plugins-noop  = { module = "com.plutolib.plugins:bundle-core-no-op", version.ref = "pluto" }
+
+[bundles]
+flipper-dev         = ["flipper", "flipper-network", "soloader"]
+flipper-leak        = ["leak-canary", "flipper", "flipper-network", "soloader", "flipper-leak-canary"]
+pluto-dev           = ["pluto", "pluto-plugins"]
+pluto-prod          = ["pluto-noop", "pluto-plugins-noop"]
+
+[plugins]

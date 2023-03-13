@@ -1,0 +1,9 @@
+[versions]
+sandwich                  = "1.3.4"
+
+[libraries]
+sandwich                  = { module = "com.github.skydoves:sandwich-datasource", version.ref = "sandwich" }
+
+[bundles]
+
+[plugins]
