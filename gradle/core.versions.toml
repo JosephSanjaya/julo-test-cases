@@ -21,6 +21,12 @@ ksp                         = "1.8.0-1.0.8"
 lifecycle                   = "2.5.1"
 diktat                      = "1.2.4.2"
 hilt                        = "2.44"
+compose-viewmodel           = "2.5.1"
+android-multidex            = "2.0.1"
+android-biometric           = "1.2.0-alpha04"
+android-crypto              = "1.1.0-alpha03"
+profile-installer           = "1.2.2"
+core-ktx                    = "1.9.0"
 
 [libraries]
 desugar                     = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
@@ -39,7 +45,7 @@ coroutine-core              = { module = "org.jetbrains.kotlinx:kotlinx-coroutin
 coroutine-android           = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutine-test              = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 lifecycle-viewmodel         = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose-viewmodel" }
 lifecycle-livedata          = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-savedstate        = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 lifecycle-compiler          = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycle" }
@@ -48,6 +54,16 @@ lifecycle-services          = { module = "androidx.lifecycle:lifecycle-service",
 lifecycle-process           = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 lifecycle-reactivestream    = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "lifecycle" }
 lifecycle-test              = { module = "androidx.lifecycle:lifecycle-runtime-testing", version.ref = "lifecycle" }
+hilt-core                   = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler               = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+
+# region Androidx App
+android-multidex            = { module = "androidx.multidex:multidex", version.ref = "android-multidex" }
+android-biometric           = { module = "androidx.biometric:biometric", version.ref = "android-biometric" }
+android-crypto              = { module = "androidx.security:security-crypto", version.ref = "android-crypto" }
+android-core                = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+# endregion
+profile-installer           = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profile-installer" }
 
 [bundles]
 kotlin                      = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect"]
@@ -56,6 +72,7 @@ firebase-plugins            = ["google-services", "firebase-crashlytics-gradle",
 lifecycle                   = ["lifecycle-viewmodel", "lifecycle-viewmodel-compose", "lifecycle-livedata", "lifecycle-savedstate",
     "lifecycle-java8", "lifecycle-services", "lifecycle-process", "lifecycle-reactivestream"]
 coroutines                  = ["coroutine-core", "coroutine-android" ]
+androidx-app                = ["android-multidex", "android-biometric", "android-crypto", "android-core"]
 
 [plugins]
 android-app                 = { id = "com.android.application", version.ref = "android-gradle" }

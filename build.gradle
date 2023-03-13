@@ -79,6 +79,9 @@ subprojects {
                 testImplementation test.bundles.test
                 androidTestImplementation test.bundles.android.test
             }
+            it.kapt {
+                correctErrorTypes true
+            }
         }
     }
 }

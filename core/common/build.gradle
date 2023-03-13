@@ -9,11 +9,13 @@ android {
 }
 
 dependencies {
+    api core.bundles.androidx.app
     api platform(core.firebase.bom)
     api core.bundles.firebase.package
     api core.bundles.lifecycle
     api core.bundles.kotlin
     api core.bundles.coroutines
+    api core.hilt.core
 
     /**
      * TODO: Enable this if want detect leak
@@ -27,4 +29,5 @@ dependencies {
     releaseApi debugging.bundles.pluto.prod
 
     implementation debugging.anrwatchdog
+    kapt core.hilt.compiler
 }
