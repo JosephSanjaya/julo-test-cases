@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "776983558077",
+    "project_id": "julo-testcase-weather",
+    "storage_bucket": "julo-testcase-weather.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776983558077:android:c3f67fa995b5897fcd84d4",
+        "android_client_info": {
+          "package_name": "julotestcase.sanjaya.weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776983558077-7kb4m64hiojdnv1pbflpg24kegd3m66e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiZt0YdGyGQAUH943P0T50Bix4YQJlpVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776983558077-7kb4m64hiojdnv1pbflpg24kegd3m66e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
