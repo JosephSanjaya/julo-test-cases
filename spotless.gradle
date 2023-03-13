@@ -1,0 +1,46 @@
+spotless {
+    java {
+        target fileTree(rootDir) {
+            include '**/*.java'
+            exclude '.idea/**', '**/build/**', 'build/**', '.gradle/**'
+        }
+        googleJavaFormat().aosp()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+    kotlinGradle {
+        target '*.gradle.kts'
+        ktlint()
+    }
+    kotlin {
+        target fileTree(rootDir) {
+            include '**/*.kt'
+            exclude '.idea/**', '**/build/**', 'build/**', '.gradle/**',
+                    '**/**/androidTest', '**/**/test', '**/androidTest', '**/test'
+        }
+        diktat(core.versions.diktat.get()).configFile("rules/diktat-rules.yml")
+        trimTrailingWhitespace()
+        indentWithSpaces()
+        endWithNewline()
+    }
+    format 'misc', {
+        target fileTree(rootDir) {
+            include '**/*.gradle', '**/*.md', '**/.gitignore'
+            exclude '.idea/**', '**/build/**', 'build/**', '.gradle/**'
+        }
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    format 'xml', {
+        target fileTree(rootDir) {
+            include '**/*.xml'
+            exclude '.idea/**', '**/build/**', 'build/**', '.gradle/**'
+        }
+        indentWithSpaces()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+}
