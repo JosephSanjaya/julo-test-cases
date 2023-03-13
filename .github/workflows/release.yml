@@ -1,0 +1,49 @@
+name: Spotless Check and Release APK
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  spotless-check-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+      - name: Spotless Check
+        run: ./gradlew spotlessCheck
+      - name: Get Version Code
+        id: version_code
+        run: echo "::set-output name=version_code::$(./gradlew -q app:properties | grep -w versionCode | cut -d'=' -f2)"
+        shell: bash
+      - name: Build APK
+        run: ./gradlew assembleRelease
+        if: success()
+      - name: Get Release Notes
+        id: release_notes
+        run: echo "::set-output name=notes::$(git log --pretty=format:'%s' ${{ github.event.pull_request.head.sha }}...${{ github.event.pull_request.base.sha }})"
+        shell: bash
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version_code.outputs.version_code }}
+          release_name: Release v${{ steps.version_code.outputs.version_code }}
+          body: ${{ steps.release_notes.outputs.notes }}
+          draft: false
+          prerelease: false
+        if: success()
+      - name: Upload APK
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: app/build/outputs/apk/release/app-release.apk
+          asset_name: app-release.apk
+          asset_content_type: application/vnd.android.package-archive
+        if: success()
