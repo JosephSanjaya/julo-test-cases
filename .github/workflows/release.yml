@@ -5,8 +5,36 @@ on:
     branches: [master]
 
 jobs:
+  check-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if release exists
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION_CODE=$(grep -oP 'versionCode \K\d+' build.gradle)
+          RELEASE_EXISTS=$(curl -s -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/repos/${{ github.repository }}/releases/tags/v$VERSION_CODE | jq '.message')
+          if [[ "$RELEASE_EXISTS" == "Not Found" ]]; then
+            echo "No existing release found with version code $VERSION_CODE. Proceeding with workflow."
+          else
+            echo "Release already exists with version code $VERSION_CODE. Cancelling workflow."
+            exit 1
+          fi
+
+  upload-keystore:
+    runs-on: ubuntu-latest
+    needs: check-release
+    steps:
+      - name: Upload Keystore
+        uses: actions/upload-artifact@v2
+        with:
+          name: keystore
+          path: /keystore/release-keystore.jks
+
   spotless-check-and-release:
     runs-on: ubuntu-latest
+    needs: [check-release, upload-keystore]
+    if: success()
     steps:
       - uses: actions/checkout@v2
       - name: Setup Java
@@ -15,13 +43,22 @@ jobs:
           java-version: '11'
       - name: Spotless Check
         run: ./gradlew spotlessCheck
+      - name: Download Keystore
+        uses: actions/download-artifact@v2
+        with:
+          name: keystore
+      - name: Build APK
+        run: |
+          ./gradlew assembleRelease \
+          -Pandroid.injected.signing.store.file=${{ github.workspace }}/keystore/release-keystore.jks \
+          -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+          -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+          -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }}
+        if: success()
       - name: Get Version Code
         id: version_code
-        run: echo "::set-output name=version_code::$(./gradlew -q app:properties | grep -w versionCode | cut -d'=' -f2)"
+        run: echo "::set-output name=version_code::$(grep -oP 'versionCode \K\d+' build.gradle)"
         shell: bash
-      - name: Build APK
-        run: ./gradlew assembleRelease
-        if: success()
       - name: Get Release Notes
         id: release_notes
         run: echo "::set-output name=notes::$(git log --pretty=format:'%s' ${{ github.event.pull_request.head.sha }}...${{ github.event.pull_request.base.sha }})"
