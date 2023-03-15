@@ -376,7 +376,7 @@
 - name: TYPE_ALIAS
   enabled: true
   configuration:
-    typeReferenceLength: '25' # max length of type reference
+    typeReferenceLength: '40' # max length of type reference
 # Checks if casting can be omitted
 - name: SMART_CAST_NEEDED
   enabled: true
@@ -477,7 +477,7 @@
 # Developer expects to get the value of the property, but receives some unknown value and some extra side effect hidden by the custom getter/setter.
 # Use extra functions for it instead.
 - name: CUSTOM_GETTERS_SETTERS
-  enabled: true
+  enabled: false
 # Checks if null-check was used explicitly (for example: if (a == null))
 # Try to avoid explicit null checks (explicit comparison with `null`)
 # Kotlin is declared as [Null-safe](https://kotlinlang.org/docs/reference/null-safety.html) language.

@@ -27,6 +27,8 @@ android-biometric           = "1.2.0-alpha04"
 android-crypto              = "1.1.0-alpha03"
 profile-installer           = "1.2.2"
 core-ktx                    = "1.9.0"
+app-startup                 = "1.1.1"
+gson                        = "2.10.1"
 
 [libraries]
 desugar                     = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
@@ -56,6 +58,8 @@ lifecycle-reactivestream    = { module = "androidx.lifecycle:lifecycle-reactives
 lifecycle-test              = { module = "androidx.lifecycle:lifecycle-runtime-testing", version.ref = "lifecycle" }
 hilt-core                   = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler               = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-plugins                = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
+app-startup                 = { module = "androidx.startup:startup-runtime", version.ref = "app-startup" }
 
 # region Androidx App
 android-multidex            = { module = "androidx.multidex:multidex", version.ref = "android-multidex" }
@@ -64,6 +68,7 @@ android-crypto              = { module = "androidx.security:security-crypto", ve
 android-core                = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 # endregion
 profile-installer           = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profile-installer" }
+gson                        = { module = "com.google.code.gson:gson", version.ref = "gson" }
 
 [bundles]
 kotlin                      = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect"]
