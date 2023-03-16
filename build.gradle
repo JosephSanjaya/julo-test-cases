@@ -79,6 +79,7 @@ subprojects {
                 coreLibraryDesugaring core.desugar
                 testImplementation core.lifecycle.test
                 testImplementation core.coroutine.test
+                testImplementation core.kotlin.test
                 testImplementation test.bundles.test
                 androidTestImplementation test.bundles.android.test
             }

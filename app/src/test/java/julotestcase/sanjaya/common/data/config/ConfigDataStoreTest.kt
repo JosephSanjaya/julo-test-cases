@@ -1,52 +1,79 @@
 package julotestcase.sanjaya.common.data.config
 
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import kotlinx.coroutines.ExperimentalCoroutinesApi
+import io.mockk.MockKAnnotations
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.Mockito.`when`
-import org.mockito.junit.jupiter.MockitoExtension
+import kotlinx.coroutines.runBlocking
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
-@ExperimentalCoroutinesApi
-@ExtendWith(MockitoExtension::class)
+@RunWith(JUnit4::class)
 class ConfigDataStoreTest {
 
-    @Mock
-    lateinit var config: FirebaseRemoteConfig
+    private val key = "test_key"
+    private val value = "test_value"
 
-    @InjectMocks
-    lateinit var configDataStore: ConfigDataStore
+    @MockK
+    private lateinit var mockFirebaseRemoteConfig: FirebaseRemoteConfig
 
-    @Test
-    fun `fetchAndActivate should emit true when successful`() = runTest {
-        // given
-        val expectedResult = true
-        `when`(config.fetchAndActivate().await()).thenReturn(expectedResult)
+    private lateinit var configDataStore: ConfigRepo
 
-        // when
-        val result = configDataStore.fetchAndActivate().first()
-
-        // then
-        assertEquals(expectedResult, result)
+    @Before
+    fun setUp() {
+        MockKAnnotations.init(this)
+        configDataStore = ConfigDataStore(mockFirebaseRemoteConfig)
     }
 
     @Test
-    fun `fetchAndActivate should emit false when unsuccessful`() = runTest {
-        // given
-        val expectedResult = false
-        `when`(config.fetchAndActivate().await()).thenReturn(expectedResult)
+    fun testGetString() = runBlocking {
+        coEvery { mockFirebaseRemoteConfig.getString(key) } returns value
+        coEvery { mockFirebaseRemoteConfig.fetchAndActivate() } returns Tasks.forResult(null)
 
-        // when
-        val result = configDataStore.fetchAndActivate().first()
+        val flow = configDataStore.getString(key)
+        assert(flow.first() == value)
 
-        // then
-        assertEquals(expectedResult, result)
+        coVerify { mockFirebaseRemoteConfig.fetchAndActivate() }
+    }
+
+    @Test
+    fun testGetLong() = runBlocking {
+        val longValue = 123L
+        coEvery { mockFirebaseRemoteConfig.getLong(key) } returns longValue
+        coEvery { mockFirebaseRemoteConfig.fetchAndActivate() } returns Tasks.forResult(null)
+
+        val flow = configDataStore.getLong(key)
+        assert(flow.first() == longValue)
+
+        coVerify { mockFirebaseRemoteConfig.fetchAndActivate() }
+    }
+
+    @Test
+    fun testGetInt() = runBlocking {
+        val doubleValue = 123.0
+        coEvery { mockFirebaseRemoteConfig.getDouble(key) } returns doubleValue
+        coEvery { mockFirebaseRemoteConfig.fetchAndActivate() } returns Tasks.forResult(null)
+
+        val flow = configDataStore.getInt(key)
+        assert(flow.first() == doubleValue.toInt())
+
+        coVerify { mockFirebaseRemoteConfig.fetchAndActivate() }
+    }
+
+    @Test
+    fun testGetDouble() = runBlocking {
+        val doubleValue = 123.456
+        coEvery { mockFirebaseRemoteConfig.getDouble(key) } returns doubleValue
+        coEvery { mockFirebaseRemoteConfig.fetchAndActivate() } returns Tasks.forResult(null)
+
+        val flow = configDataStore.getDouble(key)
+        assert(flow.first() == doubleValue)
+
+        coVerify { mockFirebaseRemoteConfig.fetchAndActivate() }
     }
 }
-

@@ -29,6 +29,7 @@ profile-installer           = "1.2.2"
 core-ktx                    = "1.9.0"
 app-startup                 = "1.1.1"
 gson                        = "2.10.1"
+pref-datastore              = "1.0.0"
 
 [libraries]
 desugar                     = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
@@ -69,6 +70,8 @@ android-core                = { module = "androidx.core:core-ktx", version.ref =
 # endregion
 profile-installer           = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profile-installer" }
 gson                        = { module = "com.google.code.gson:gson", version.ref = "gson" }
+kotlin-test                 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+pref-datastore              = { module = "androidx.datastore:datastore-preferences", version.ref = "pref-datastore" }
 
 [bundles]
 kotlin                      = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect"]

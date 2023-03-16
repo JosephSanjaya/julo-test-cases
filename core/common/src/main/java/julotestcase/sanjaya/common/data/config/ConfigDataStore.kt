@@ -1,10 +1,12 @@
 package julotestcase.sanjaya.common.data.config
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+
+import javax.inject.Inject
+
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import javax.inject.Inject
 
 /**
  * Implementation of [ConfigRepo] that fetches and activates Firebase remote config data.

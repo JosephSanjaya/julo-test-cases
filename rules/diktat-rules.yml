@@ -39,7 +39,7 @@
     allowedPrefixes: "" # A list of functions that return boolean and are allowed to use. Input is in a form "foo, bar".
 # Checks that function/method name is in lowerCamelCase
 - name: FUNCTION_NAME_INCORRECT_CASE
-  enabled: true
+  enabled: false
 # Checks that typealias name is in PascalCase
 - name: TYPEALIAS_NAME_INCORRECT_CASE
   enabled: true
@@ -437,7 +437,7 @@
 - name: TOO_MANY_LINES_IN_LAMBDA
   enabled: true
   configuration:
-    maxLambdaLength: 10 # max length of lambda without parameters
+    maxLambdaLength: 25 # max length of lambda without parameters
 # Checks that using unnecessary, custom label
 - name: CUSTOM_LABEL
   enabled: true

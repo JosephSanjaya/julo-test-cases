@@ -16,6 +16,7 @@ dependencies {
     api core.bundles.kotlin
     api core.bundles.coroutines
     api core.app.startup
+    api core.pref.datastore
 
     /**
      * TODO: Enable this if want detect leak

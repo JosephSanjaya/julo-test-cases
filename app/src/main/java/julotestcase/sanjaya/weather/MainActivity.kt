@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
  * @param name The name of the person to greet.
  */
 @Composable
-fun greeting(name: String) {
+fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
@@ -57,7 +57,7 @@ fun greeting(name: String) {
  */
 @Preview(showBackground = true)
 @Composable
-fun defaultPreview() {
+fun DefaultPreview() {
     WeatherAppTheme {
         Greeting("Android")
     }
