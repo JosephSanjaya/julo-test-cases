@@ -21,7 +21,6 @@ ksp                         = "1.8.10-1.0.9"
 lifecycle                   = "2.5.1"
 diktat                      = "1.2.4.2"
 hilt                        = "2.44"
-compose-viewmodel           = "2.5.1"
 android-multidex            = "2.0.1"
 android-biometric           = "1.2.0-alpha04"
 android-crypto              = "1.1.0-alpha03"
@@ -30,6 +29,9 @@ core-ktx                    = "1.9.0"
 app-startup                 = "1.1.1"
 gson                        = "2.10.1"
 pref-datastore              = "1.0.0"
+splitties                   = "3.0.0"
+blankj-codex                = "1.31.0"
+lich                        = "1.7.0"
 
 [libraries]
 desugar                     = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar" }
@@ -48,7 +50,6 @@ coroutine-core              = { module = "org.jetbrains.kotlinx:kotlinx-coroutin
 coroutine-android           = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutine-test              = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 lifecycle-viewmodel         = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose-viewmodel" }
 lifecycle-livedata          = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 lifecycle-savedstate        = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycle" }
 lifecycle-compiler          = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycle" }
@@ -61,6 +62,8 @@ hilt-core                   = { module = "com.google.dagger:hilt-android", versi
 hilt-compiler               = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 hilt-plugins                = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 app-startup                 = { module = "androidx.startup:startup-runtime", version.ref = "app-startup" }
+lich                        = { module = "com.linecorp.lich:savedstate", version.ref = "lich" }
+lich-compiler               = { module = "com.linecorp.lich:savedstate-compiler", version.ref = "lich" }
 
 # region Androidx App
 android-multidex            = { module = "androidx.multidex:multidex", version.ref = "android-multidex" }
@@ -72,15 +75,31 @@ profile-installer           = { module = "androidx.profileinstaller:profileinsta
 gson                        = { module = "com.google.code.gson:gson", version.ref = "gson" }
 kotlin-test                 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
 pref-datastore              = { module = "androidx.datastore:datastore-preferences", version.ref = "pref-datastore" }
+blankj-codex                = { module = "com.blankj:utilcodex", version.ref = "blankj-codex" }
+splitties-room              = { module = "com.louiscad.splitties:splitties-arch-room", version.ref = "splitties" }
+splitties-systemservices    = { module = "com.louiscad.splitties:splitties-systemservices", version.ref = "splitties" }
+splitties-intents           = { module = "com.louiscad.splitties:splitties-intents", version.ref = "splitties" }
+splitties-fragments         = { module = "com.louiscad.splitties:splitties-fragments", version.ref = "splitties" }
+splitties-fragmentargs      = { module = "com.louiscad.splitties:splitties-fragmentargs", version.ref = "splitties" }
+splitties-bundle            = { module = "com.louiscad.splitties:splitties-bundle", version.ref = "splitties" }
+splitties-coroutines        = { module = "com.louiscad.splitties:splitties-coroutines", version.ref = "splitties" }
+splitties-lifecycle-coroutines = { module = "com.louiscad.splitties:splitties-lifecycle-coroutines", version.ref = "splitties" }
+splitties-mainthread        = { module = "com.louiscad.splitties:splitties-mainthread", version.ref = "splitties" }
+splitties-mainhandler       = { module = "com.louiscad.splitties:splitties-mainhandler", version.ref = "splitties" }
+splitties-checkedlazy       = { module = "com.louiscad.splitties:splitties-checkedlazy", version.ref = "splitties" }
 
 [bundles]
 kotlin                      = ["kotlin-stdlib", "kotlin-stdlib-jdk8", "kotlin-reflect"]
 firebase-package            = ["firebase-crashlytics", "firebase-remoteconfig", "firebase-perf" ]
 firebase-plugins            = ["google-services", "firebase-crashlytics-gradle", "firebase-pref-gradle" ]
-lifecycle                   = ["lifecycle-viewmodel", "lifecycle-viewmodel-compose", "lifecycle-livedata", "lifecycle-savedstate",
+lifecycle                   = ["lifecycle-viewmodel", "lifecycle-livedata", "lifecycle-savedstate",
     "lifecycle-java8", "lifecycle-services", "lifecycle-process", "lifecycle-reactivestream"]
 coroutines                  = ["coroutine-core", "coroutine-android" ]
 androidx-app                = ["android-multidex", "android-biometric", "android-crypto", "android-core"]
+splitties                   = ["splitties-room", "splitties-systemservices", "splitties-intents",
+    "splitties-fragments", "splitties-fragmentargs", "splitties-bundle", "splitties-coroutines",
+    "splitties-lifecycle-coroutines", "splitties-mainthread", "splitties-mainhandler", "splitties-checkedlazy"]
+
 
 [plugins]
 android-app                 = { id = "com.android.application", version.ref = "android-gradle" }

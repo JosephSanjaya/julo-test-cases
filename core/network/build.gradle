@@ -3,4 +3,5 @@ dependencies {
     kapt core.hilt.compiler
     api project(':core:common')
     api network.sandwich
+    api network.retrofit
 }

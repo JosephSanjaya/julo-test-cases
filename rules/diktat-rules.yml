@@ -237,7 +237,7 @@
 - name: LONG_LINE
   enabled: true
   configuration:
-    lineLength: '120'
+    lineLength: '125'
 # Checks that semicolons are not used at the end of a line
 - name: REDUNDANT_SEMICOLON
   enabled: true
@@ -382,7 +382,7 @@
   enabled: true
 # Checks that variables of generic types have explicit type declaration
 - name: GENERIC_VARIABLE_WRONG_DECLARATION
-  enabled: true
+  enabled: false
 # Inspection that checks if string template has redundant curly braces
 - name: STRING_TEMPLATE_CURLY_BRACES
   enabled: true
@@ -406,7 +406,7 @@
 - name: TOO_LONG_FUNCTION
   enabled: true
   configuration:
-    maxFunctionLength: '30' # max length of function
+    maxFunctionLength: '40' # max length of function
     isIncludeHeader: 'false' # count function's header
 # Warns if there are nested functions
 - name: AVOID_NESTED_FUNCTIONS

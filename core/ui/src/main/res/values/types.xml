@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--region Headline-->
+    <style name="TextAppearance.WeatherApp.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/expletus_semibold</item>
+        <item name="android:fontFamily">@font/expletus_semibold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/expletus_semibold</item>
+        <item name="android:fontFamily">@font/expletus_semibold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/expletus_semibold</item>
+        <item name="android:fontFamily">@font/expletus_semibold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/expletus_semibold</item>
+        <item name="android:fontFamily">@font/expletus_semibold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/expletus_semibold</item>
+        <item name="android:fontFamily">@font/expletus_semibold</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/mukta_regular</item>
+        <item name="android:fontFamily">@font/mukta_regular</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/mukta_regular</item>
+        <item name="android:fontFamily">@font/mukta_regular</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/mukta_regular</item>
+        <item name="android:fontFamily">@font/mukta_regular</item>
+    </style>
+
+    <style name="TextAppearance.WeatherApp.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/mukta_regular</item>
+        <item name="android:fontFamily">@font/mukta_regular</item>
+    </style>
+
+</resources>

@@ -41,6 +41,7 @@ dependencies {
     implementation project(':core:common')
     implementation project(':core:ui')
     implementation project(':core:network')
+    implementation project(':features:splash')
     implementation core.hilt.core
     kapt core.hilt.compiler
 }

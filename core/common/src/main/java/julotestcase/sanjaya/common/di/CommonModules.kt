@@ -16,6 +16,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import julotestcase.sanjaya.common.data.pref.PrefRepo
 import javax.inject.Named
+import javax.inject.Singleton
 
 /**
  * A module containing common dependencies used throughout the application.
@@ -31,6 +32,7 @@ class CommonModules {
      * @return An instance of [FirebaseRemoteConfig].
      */
     @Provides
+    @Singleton
     fun providesRemoteConfigClient(): FirebaseRemoteConfig = Firebase.remoteConfig
 
     /**
@@ -42,6 +44,7 @@ class CommonModules {
      * @return An instance of [Gson] with the specified configuration.
      */
     @Provides
+    @Singleton
     fun provideGson(): Gson = GsonBuilder()
         .setLenient()
         .excludeFieldsWithoutExposeAnnotation()
@@ -56,6 +59,7 @@ class CommonModules {
      * @return [DataStore] instance for the app's common preferences.
      * **/
     @Provides
+    @Singleton
     @Named(PrefRepo.PREF_NAME)
     fun provideCommonPref(
         @ApplicationContext context: Context

@@ -59,10 +59,8 @@ subprojects {
                     }
                 }
                 buildFeatures {
-                    compose true
-                }
-                composeOptions {
-                    kotlinCompilerExtensionVersion = core.versions.kotlin.compiler.get()
+                    dataBinding true
+                    viewBinding true
                 }
                 compileOptions {
                     coreLibraryDesugaringEnabled true

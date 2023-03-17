@@ -5,6 +5,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import javax.inject.Inject
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 
@@ -39,6 +40,13 @@ class ConfigDataStore @Inject constructor(
         }
         // Emit the result of the provided block.
         emit(block())
+    }
+
+    override fun fetch(): Flow<Boolean> = callbackFlow {
+        config.fetchAndActivate().addOnCompleteListener {
+            trySend(it.isSuccessful)
+            close(it.exception)
+        }
     }
 
     override fun getString(key: String): Flow<String> = flowBuilder { config.getString(key) }
