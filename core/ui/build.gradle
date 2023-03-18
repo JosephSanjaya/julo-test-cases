@@ -1,8 +1,9 @@
 dependencies {
+    implementation core.hilt.core
     kapt core.hilt.compiler
     api project(':core:common')
-    api platform(ui.compose.bom)
-    api ui.bundles.compose.ui
-    debugApi ui.bundles.compose.debug
-    androidTestApi ui.compose.test.junit
+    api ui.material
+    api ui.viewbinding.delegate
+    api ui.swipe.refresh
+    api ui.adapter
 }

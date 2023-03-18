@@ -18,5 +18,8 @@ subprojects {
 
 dependencies {
     constraints {
+        api(project(":features:splash"))
+        api(project(":features:location"))
+        api(project(":features:dashboard"))
     }
 }

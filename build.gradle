@@ -3,6 +3,7 @@ buildscript {
         classpath core.bundles.firebase.plugins
         classpath ui.navigation.plugins
         classpath core.ksp
+        classpath core.hilt.plugins
     }
 }
 
@@ -23,6 +24,7 @@ subprojects {
             it.apply plugin: "kotlin-android"
             it.apply plugin: "kotlin-parcelize"
             it.apply plugin: "kotlin-kapt"
+            it.apply plugin: "dagger.hilt.android.plugin"
             it.apply plugin: "androidx.navigation.safeargs.kotlin"
 
             it.android {
@@ -57,10 +59,8 @@ subprojects {
                     }
                 }
                 buildFeatures {
-                    compose true
-                }
-                composeOptions {
-                    kotlinCompilerExtensionVersion = core.versions.kotlin.compiler.get()
+                    dataBinding true
+                    viewBinding true
                 }
                 compileOptions {
                     coreLibraryDesugaringEnabled true
@@ -76,6 +76,8 @@ subprojects {
             it.dependencies {
                 coreLibraryDesugaring core.desugar
                 testImplementation core.lifecycle.test
+                testImplementation core.coroutine.test
+                testImplementation core.kotlin.test
                 testImplementation test.bundles.test
                 androidTestImplementation test.bundles.android.test
             }

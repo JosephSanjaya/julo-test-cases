@@ -15,7 +15,10 @@ dependencies {
     api core.bundles.lifecycle
     api core.bundles.kotlin
     api core.bundles.coroutines
-    api core.hilt.core
+    api core.bundles.splitties
+    api core.app.startup
+    api core.pref.datastore
+    api core.blankj.codex
 
     /**
      * TODO: Enable this if want detect leak
@@ -29,5 +32,9 @@ dependencies {
     releaseApi debugging.bundles.pluto.prod
 
     implementation debugging.anrwatchdog
+    implementation core.hilt.core
     kapt core.hilt.compiler
+    api core.gson
+    api core.lich
+    ksp core.lich.compiler
 }

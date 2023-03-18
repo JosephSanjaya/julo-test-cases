@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_loading">Loading..</string>
+    <string name="button_retry">Retry</string>
+    <string name="label_failed_to_fetch_data">Failed to fetch data</string>
+    <string name="label_today">Today</string>
+    <string name="label_search">Search...</string>
+    <string name="label_change">Change</string>
+</resources>
