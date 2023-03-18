@@ -1,12 +1,13 @@
 package julotestcase.sanjaya.weather.di
 
-import julotestcase.sanjaya.weather.router.splash.SplashExternalRouterImpl
-import julotestcase.sanjaya.weather.splash.presentation.navigation.SplashExternalRoute
-
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import julotestcase.sanjaya.weather.location.presentation.router.LocationRouter
+import julotestcase.sanjaya.weather.router.location.LocationRouterImpl
+import julotestcase.sanjaya.weather.router.splash.SplashExternalRouterImpl
+import julotestcase.sanjaya.weather.splash.presentation.navigation.SplashExternalRoute
 
 /**
  * A Dagger module that binds implementations of Route to their respective Routers.
@@ -24,4 +25,9 @@ abstract class RouterBinder {
     abstract fun bindSplashExternal(
         impl: SplashExternalRouterImpl
     ): SplashExternalRoute
+
+    @Binds
+    abstract fun bindLocRouter(
+        impl: LocationRouterImpl
+    ): LocationRouter
 }

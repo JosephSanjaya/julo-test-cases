@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_powered_by_openweather">Powered By OpenWeather</string>
+    <string name="label_powered_by_openweather">Powered By OpenWeather &amp; Api Ninja</string>
 </resources>

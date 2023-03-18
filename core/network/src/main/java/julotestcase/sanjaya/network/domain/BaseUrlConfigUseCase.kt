@@ -1,5 +1,6 @@
 package julotestcase.sanjaya.network.domain
 
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -15,5 +16,14 @@ interface BaseUrlConfigUseCase {
      *
      * @return A [Flow] of [String] values representing the base URL.
      */
-    fun getBaseUrl(): Flow<String>
+    fun getOpenWeatherBaseUrl(): String
+    fun getApiNinjaBaseUrl(): String
+
+    companion object {
+        /**
+         * The key used to retrieve the base URL configuration from the [FirebaseRemoteConfig].
+         */
+        const val OPEN_WEATHER_BASE_URL = "open_weather_base_url"
+        const val API_NINJA_BASE_URL = "api_ninja_base_url"
+    }
 }

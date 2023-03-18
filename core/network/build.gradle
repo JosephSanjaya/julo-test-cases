@@ -4,4 +4,7 @@ dependencies {
     api project(':core:common')
     api network.sandwich
     api network.retrofit
+    api network.url.manager
+    api network.gson.converter
+    api network.coroutines.adapter
 }

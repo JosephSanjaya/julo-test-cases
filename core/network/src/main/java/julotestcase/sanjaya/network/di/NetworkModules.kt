@@ -1,5 +1,7 @@
 package julotestcase.sanjaya.network.di
 
+import com.google.gson.Gson
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.pluto.plugins.network.PlutoInterceptor
 import com.skydoves.sandwich.datasource.adapters.DataSourceCallAdapterFactory
 import dagger.Module
@@ -8,14 +10,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import julotestcase.sanjaya.common.utils.initializer.DebuggerInitializer
 import julotestcase.sanjaya.network.domain.BaseUrlConfigUseCase
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.runBlocking
 
 /**
  * A module containing network dependencies used throughout the application.
@@ -31,12 +31,20 @@ class NetworkModules {
      */
     @Provides
     @Singleton
-    fun providesOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+    fun providesOkHttpClient(
+        baseUrlUseCase: BaseUrlConfigUseCase
+    ): OkHttpClient = RetrofitUrlManager.getInstance().apply {
+        putDomain(BaseUrlConfigUseCase.OPEN_WEATHER_BASE_URL, baseUrlUseCase.getOpenWeatherBaseUrl())
+        putDomain(BaseUrlConfigUseCase.API_NINJA_BASE_URL, baseUrlUseCase.getApiNinjaBaseUrl())
+        setGlobalDomain(baseUrlUseCase.getOpenWeatherBaseUrl())
+    }.with(
+        OkHttpClient.Builder()
+            .connectTimeout(1, TimeUnit.MINUTES)
+            .readTimeout(1, TimeUnit.MINUTES)
+            .writeTimeout(1, TimeUnit.MINUTES)
+    )
         .addInterceptor(PlutoInterceptor())
         .addNetworkInterceptor(DebuggerInitializer.getFlipperInterceptor())
-        .connectTimeout(1, TimeUnit.MINUTES)
-        .readTimeout(1, TimeUnit.MINUTES)
-        .writeTimeout(1, TimeUnit.MINUTES)
         .build()
 
     /**
@@ -53,12 +61,13 @@ class NetworkModules {
     @Singleton
     fun providesRetrofit(
         okHttpClient: OkHttpClient,
-        baseUrlConfigUseCase: BaseUrlConfigUseCase
+        baseUrlUseCase: BaseUrlConfigUseCase,
+        gson: Gson
     ): Retrofit = Retrofit.Builder()
-        .addCallAdapterFactory(DataSourceCallAdapterFactory.create())
-        .baseUrl(runBlocking {
-            baseUrlConfigUseCase.getBaseUrl().firstOrNull().orEmpty()
-        })
         .client(okHttpClient)
+        .baseUrl(baseUrlUseCase.getOpenWeatherBaseUrl())
+        .addCallAdapterFactory(DataSourceCallAdapterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 }

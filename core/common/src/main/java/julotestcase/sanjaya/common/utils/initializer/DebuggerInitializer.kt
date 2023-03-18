@@ -3,6 +3,7 @@ package julotestcase.sanjaya.common.utils.initializer
 import android.app.Application
 import android.content.Context
 import androidx.startup.Initializer
+import com.blankj.utilcode.util.AppUtils
 import com.facebook.flipper.android.AndroidFlipperClient
 import com.facebook.flipper.android.utils.FlipperUtils
 import com.facebook.flipper.plugins.crashreporter.CrashReporterPlugin
@@ -24,7 +25,6 @@ import com.pluto.plugins.network.PlutoNetworkPlugin
 import com.pluto.plugins.preferences.PlutoSharePreferencesPlugin
 import com.pluto.plugins.rooms.db.PlutoRoomsDatabasePlugin
 import julotestcase.sanjaya.common.BuildConfig
-import julotestcase.sanjaya.common.data.pref.PrefRepo
 import timber.log.Timber
 
 /**
@@ -46,7 +46,7 @@ class DebuggerInitializer : Initializer<Unit> {
                 addPlugin(DatabasesFlipperPlugin(context))
                 addPlugin(NavigationFlipperPlugin.getInstance())
                 addPlugin(getNetworkFlipper())
-                addPlugin(SharedPreferencesFlipperPlugin(context, PrefRepo.PREF_NAME))
+                addPlugin(SharedPreferencesFlipperPlugin(context, AppUtils.getAppPackageName()))
             }.start()
         }
     }

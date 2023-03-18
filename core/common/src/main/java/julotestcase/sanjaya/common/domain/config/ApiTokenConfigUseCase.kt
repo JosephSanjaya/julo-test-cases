@@ -12,5 +12,6 @@ interface ApiTokenConfigUseCase {
      *
      * @return A [Flow] that emits the current API token string.
      */
-    fun getApiToken(): Flow<String>
+    fun getOpenWeatherApiKey(): String
+    fun getApiNinjaApiKey(): String
 }

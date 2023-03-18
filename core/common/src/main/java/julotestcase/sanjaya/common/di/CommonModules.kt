@@ -1,9 +1,10 @@
 package julotestcase.sanjaya.common.di
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import com.blankj.utilcode.util.AppUtils
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfig
@@ -14,8 +15,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import julotestcase.sanjaya.common.data.pref.PrefRepo
-import javax.inject.Named
 import javax.inject.Singleton
 
 /**
@@ -24,7 +23,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class CommonModules {
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = PrefRepo.PREF_NAME)
 
     /**
      * Provides an instance of [FirebaseRemoteConfig].
@@ -60,8 +58,7 @@ class CommonModules {
      * **/
     @Provides
     @Singleton
-    @Named(PrefRepo.PREF_NAME)
-    fun provideCommonPref(
+    fun providePref(
         @ApplicationContext context: Context
-    ): DataStore<Preferences> = context.dataStore
+    ): SharedPreferences = context.getSharedPreferences(AppUtils.getAppPackageName(), MODE_PRIVATE)
 }

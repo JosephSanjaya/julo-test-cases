@@ -13,3 +13,10 @@ inline fun <reified T> String.toObject(): T {
     // Convert the JSON string to an object of type T using Gson.
     return gson.fromJson(this, T::class.java)
 }
+
+inline fun <reified T> T.toJson(): String {
+    // Get a reference to the Gson object.
+    val gson = getEntryPoint(JsonEntryPoint::class.java).getGson()
+    // Convert the JSON string to an object of type T using Gson.
+    return gson.toJson(this)
+}

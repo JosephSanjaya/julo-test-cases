@@ -1,6 +1,9 @@
 package julotestcase.sanjaya.weather.router.splash
 
 import android.content.Context
+import androidx.navigation.findNavController
+import com.blankj.utilcode.util.ActivityUtils
+import julotestcase.sanjaya.weather.R
 import julotestcase.sanjaya.weather.splash.presentation.navigation.SplashExternalRoute
 import javax.inject.Inject
 
@@ -18,6 +21,7 @@ class SplashExternalRouterImpl @Inject constructor() : SplashExternalRoute {
      * @param context The [Context] used to start the dashboard activity.
      */
     override fun goToDashboard(context: Context) {
-        // Start the dashboard activity using the context.
+        ActivityUtils.getTopActivity().findNavController(R.id.navHost)
+            .navigate(R.id.action_splashFragment_to_dashboardFragment)
     }
 }

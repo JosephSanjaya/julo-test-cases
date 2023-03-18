@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_set_main_location">You haven\'t set main location</string>
+    <string name="label_please_choose_location_from_below">Please choose location from below</string>
+    <string name="label_choose_location">Choose Location</string>
+    <string name="label_forecast">Forecast</string>
+    <string name="label_set_as_main">Set As Main</string>
+</resources>

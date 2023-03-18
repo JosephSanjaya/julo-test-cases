@@ -9,6 +9,7 @@
         <item name="android:ambientShadowAlpha">0.036</item>
         <item name="android:spotShadowAlpha">0.036</item>
         <item name="colorPrimary">@color/neon_blue_100</item>
+        <item name="colorError">@color/monza_100</item>
         <item name="textAppearanceDisplayLarge">@style/TextAppearance.WeatherApp.DisplayLarge</item>
         <item name="textAppearanceDisplayMedium">@style/TextAppearance.WeatherApp.DisplayMedium
         </item>

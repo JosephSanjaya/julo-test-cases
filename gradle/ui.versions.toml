@@ -8,6 +8,8 @@ navigation-plugins           = { module = "androidx.navigation:navigation-safe-a
 navigation                   = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 navigation-frag              = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
 viewbinding-delegate         = { module = "com.github.hoc081098:ViewBindingDelegate", version = "1.4.0" }
+swipe-refresh                = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version = "1.1.0" }
+adapter                      = { module = "com.github.CymChad:BaseRecyclerViewAdapterHelper", version = "3.0.10" }
 
 [bundles]
 navigation                   = ["navigation", "navigation-frag"]
