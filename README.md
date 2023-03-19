@@ -31,6 +31,8 @@ The main external libraries used in this app include:
 - Unit tests using JUnit and io.mockk
 - Diktat as code quality gate and static analysis
 - Gradle Version catalog for gradle dependencies single source of truth
+- Room for storing local database
+
 
 ## How to Build and Install
 To build and install this application, follow these steps:
