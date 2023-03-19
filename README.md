@@ -7,11 +7,10 @@ The application is built with a multi-module architecture, which includes the fo
 - features
 
 The core module contains the following submodules:
-
 - core:ui
 - core:common
 - core:network
-- 
+
 The features module contains the following submodules:
 - features:splash
 - features:dashboard
@@ -33,7 +32,6 @@ The main external libraries used in this app include:
 
 ## How to Build and Install
 To build and install this application, follow these steps:
-
  - Clone this repository to your local machine using Git.
 bash
 ```
