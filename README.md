@@ -29,6 +29,8 @@ The main external libraries used in this app include:
 - Dagger Hilt for dependencies injection
 - Jetpack Navigation for navigation and to apply a single activity pattern
 - Unit tests using JUnit and io.mockk
+- Diktat as code quality gate and static analysis
+- Gradle Version catalog for gradle dependencies single source of truth
 
 ## How to Build and Install
 To build and install this application, follow these steps:
