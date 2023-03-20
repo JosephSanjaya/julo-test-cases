@@ -11,7 +11,7 @@ import julotestcase.sanjaya.weather.location.databinding.LayoutRowCityBinding
 
 class LocationSearchAdapter(
     private val onClick: (LocationData) -> Unit = {},
-    private val onFavoriteClick: (LocationData) -> Unit = {}
+    private val onFavoriteClick: (Int, LocationData) -> Unit = { _, _ -> }
 ) :
     BaseQuickAdapter<LocationData, BaseDataBindingHolder<LayoutRowCityBinding>>(
         R.layout.layout_row_city,
@@ -23,6 +23,7 @@ class LocationSearchAdapter(
         setAnimationWithDefault(AnimationType.SlideInBottom)
         setOnItemClickListener(this)
         setOnItemChildClickListener(this)
+        addChildClickViewIds(R.id.cvRoot, R.id.btnFavorite)
     }
 
     override fun convert(
@@ -32,13 +33,18 @@ class LocationSearchAdapter(
         holder.dataBinding?.apply {
             tvCityName.text = item.name
             tvState.text = item.state
+            btnFavorite.setImageResource(
+                if (item.isFavorite)
+                    julotestcase.sanjaya.ui.R.drawable.baseline_favorite_24 else
+                    julotestcase.sanjaya.ui.R.drawable.baseline_favorite_border_24
+            )
         }
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
         when (view.id) {
             R.id.cvRoot -> onClick(getItem(position))
-            R.id.btnFavorite -> onFavoriteClick(getItem(position))
+            R.id.btnFavorite -> onFavoriteClick(position, getItem(position))
         }
     }
 

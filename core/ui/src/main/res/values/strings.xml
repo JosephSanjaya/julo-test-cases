@@ -6,4 +6,5 @@
     <string name="label_today">Today</string>
     <string name="label_search">Search...</string>
     <string name="label_change">Change</string>
+    <string name="label_favorites">Favorites</string>
 </resources>
