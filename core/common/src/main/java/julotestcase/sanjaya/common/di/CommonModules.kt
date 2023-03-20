@@ -3,7 +3,6 @@ package julotestcase.sanjaya.common.di
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import androidx.datastore.core.DataStore
 import com.blankj.utilcode.util.AppUtils
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig

@@ -17,7 +17,7 @@ dependencies {
     api core.bundles.coroutines
     api core.bundles.splitties
     api core.app.startup
-    api core.pref.datastore
+    api core.room.runtime
     api core.blankj.codex
 
     /**
